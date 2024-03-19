@@ -18,7 +18,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage. Good
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -27,7 +27,7 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'slug' => 'required',
             'price' => 'required',
         ]);
@@ -57,7 +57,7 @@ class ProductController extends Controller
      */
     public function search($name)
     {
-        $product = Product::where('name', 'like', '%'.$name.'%')->get();
+        $product = Product::where('name', 'like', '%' . $name . '%')->get();
         return response()->json($product, 200);
     }
 
